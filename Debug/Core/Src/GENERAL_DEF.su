@@ -1,0 +1,3 @@
+../Core/Src/GENERAL_DEF.c:38:6:Set_Diagnose	16	static
+../Core/Src/GENERAL_DEF.c:43:6:Clear_Diagnose	16	static
+../Core/Src/GENERAL_DEF.c:48:6:Clear_All_Diagnoses	4	static

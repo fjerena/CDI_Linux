@@ -1,0 +1,4 @@
+../Core/Src/APPLICATION.c:18:6:Task_Fast	8	static
+../Core/Src/APPLICATION.c:24:6:Task_Medium	8	static
+../Core/Src/APPLICATION.c:35:6:Task_Slow	8	static
+../Core/Src/APPLICATION.c:49:6:Running_Scheduller	8	static

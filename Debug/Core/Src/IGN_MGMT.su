@@ -1,0 +1,16 @@
+../Core/Src/IGN_MGMT.c:24:15:reset_cause_get	16	static
+../Core/Src/IGN_MGMT.c:84:14:reset_cause_get_name	24	static
+../Core/Src/IGN_MGMT.c:119:6:Cut_Igntion	4	static
+../Core/Src/IGN_MGMT.c:144:9:Ignition_nTime	16	static
+../Core/Src/IGN_MGMT.c:152:6:Set_Pulse_Program	8	static
+../Core/Src/IGN_MGMT.c:236:6:Engine_STOP_test	4	static
+../Core/Src/IGN_MGMT.c:278:6:Pulse_Generator_Scheduler	16	static
+../Core/Src/IGN_MGMT.c:309:6:TurnOffAllPulseInt	8	static
+../Core/Src/IGN_MGMT.c:317:6:HAL_TIM_PeriodElapsedCallback	16	static
+../Core/Src/IGN_MGMT.c:325:6:Rising_Edge_Event	8	static
+../Core/Src/IGN_MGMT.c:343:6:Falling_Edge_Event	8	static
+../Core/Src/IGN_MGMT.c:360:6:HAL_TIM_IC_CaptureCallback	16	static
+../Core/Src/IGN_MGMT.c:375:6:Treat_Int	16	static
+../Core/Src/IGN_MGMT.c:402:6:HAL_TIM_OC_DelayElapsedCallback	16	static
+../Core/Src/IGN_MGMT.c:429:6:updateSystemData	8	static
+../Core/Src/IGN_MGMT.c:457:6:resetCauseAnalysis	8	static

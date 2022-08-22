@@ -1,0 +1,8 @@
+../Core/Src/MATH_LIB.c:11:10:Saturation	16	static
+../Core/Src/MATH_LIB.c:21:9:Filter8bits	24	static
+../Core/Src/MATH_LIB.c:31:10:Filter16bits	24	static
+../Core/Src/MATH_LIB.c:44:8:binarySearchEntender	24	static
+../Core/Src/MATH_LIB.c:182:9:binarySearch	24	static
+../Core/Src/MATH_LIB.c:212:9:linearInterpolation	32	static
+../Core/Src/MATH_LIB.c:244:6:Statistics	8	static
+../Core/Src/MATH_LIB.c:258:10:predictionCalc	16	static
