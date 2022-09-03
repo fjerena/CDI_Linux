@@ -118,26 +118,26 @@ const char * reset_cause_get_name(reset_cause_t reset_cause)
 
 void Cut_Igntion(void)
 {	
-		static uint8_t flagCutoff = OFF;
+	static uint8_t flagCutoff = OFF;
 	
     if(scenario.Engine_Speed>calibFlashBlock.Calibration_RAM.Max_Engine_Speed)
     {
         scenario.Cutoff_IGN = ON;
-			  flagCutoff = ON;
+		flagCutoff = ON;
     }
     else
     {
-			  if(flagCutoff == OFF)
-				{
-						scenario.Cutoff_IGN = OFF;
-				}
-				//The constant 300rpm is the hysteresis, the control will wait Engine Speed (after to overcome te Engine Speed Limit)
-				//decrease more than 300rpm to turnoff the cutoff function and consequently restart the engine combustions
-				else if(scenario.Engine_Speed<(calibFlashBlock.Calibration_RAM.Max_Engine_Speed)-300u)
-				{
-						scenario.Cutoff_IGN = OFF;
-						flagCutoff = OFF;
-				}					
+    	if(flagCutoff == OFF)
+		{
+    		scenario.Cutoff_IGN = OFF;
+		}
+		//The constant 300rpm is the hysteresis, the control will wait Engine Speed (after to overcome te Engine Speed Limit)
+		//decrease more than 300rpm to turnoff the cutoff function and consequently restart the engine combustions
+		else if(scenario.Engine_Speed<(calibFlashBlock.Calibration_RAM.Max_Engine_Speed)-300u)
+		{
+			scenario.Cutoff_IGN = OFF;
+			flagCutoff = OFF;
+		}
     }
 }
 
@@ -222,7 +222,7 @@ void Set_Pulse_Program(void)
     else
     {
         //Underspeed
-        //maybe I don´t need to register this because will happening all engine start event
+        //maybe I don't need to register this because will happening all engine start event
     }
 
     Pulse_Program.timerCtrl[0].timer_program = EMPTY;
@@ -247,31 +247,31 @@ void Engine_STOP_test(void)
     {
         if(scenario.Rising_Edge_Counter == initial_value)
         {
-					  //It going to clean all scenario struct (system_vars)
+			//It going to clean all scenario struct (system_vars)
             scenario.Engine_Speed_old=0;
-						scenario.Engine_Speed=0;
-						scenario.engineSpeedPred=0;
-						scenario.engineSpeedFiltered=0;
-						scenario.avarageEngineSpeed=0;
-						scenario.deltaEngineSpeed=0;
-						scenario.Rising_Edge_Counter=0;
-						scenario.triggerEventCounter=0;
-						scenario.inversorEventCounter=0;
-						scenario.Measured_Period=0;
-						scenario.TDuty_Input_Signal=0;
-						scenario.tdutyInputSignalPred=0;
-						scenario.tdutyInputSignalPredLinear=0;
-						scenario.sensorAngDisplecementMeasured=0;
-						scenario.TStep=0;
-						scenario.nAdv=0;
-						scenario.Cutoff_IGN=0;
-						scenario.Update_calc=0;
-						scenario.nOverflow=0;
-						scenario.nOverflow_RE=0;
-						scenario.nOverflow_FE=0;
+			scenario.Engine_Speed=0;
+			scenario.engineSpeedPred=0;
+			scenario.engineSpeedFiltered=0;
+			scenario.avarageEngineSpeed=0;
+			scenario.deltaEngineSpeed=0;
+			scenario.Rising_Edge_Counter=0;
+			scenario.triggerEventCounter=0;
+			scenario.inversorEventCounter=0;
+			scenario.Measured_Period=0;
+			scenario.TDuty_Input_Signal=0;
+			scenario.tdutyInputSignalPred=0;
+			scenario.tdutyInputSignalPredLinear=0;
+			scenario.sensorAngDisplecementMeasured=0;
+			scenario.TStep=0;
+			scenario.nAdv=0;
+			scenario.Cutoff_IGN=0;
+			scenario.Update_calc=0;
+			scenario.nOverflow=0;
+			scenario.nOverflow_RE=0;
+			scenario.nOverflow_FE=0;
         }
 				
-				program = FALSE;
+		program = FALSE;
     }
 }
 
@@ -316,7 +316,7 @@ void TurnOffAllPulseInt(void)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-		if(htim->Instance == TIM2)
+	if(htim->Instance == TIM2)
     {
         scenario.nOverflow++;
     }
@@ -337,7 +337,7 @@ void Rising_Edge_Event(void)
     }
 
     scenario.Rising_Edge_Counter++;
-		Toggle_LED_Red();
+	Toggle_LED_Red();
 }
 
 void Falling_Edge_Event(void)
@@ -428,47 +428,47 @@ void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 
 void updateSystemData(void)
 {
-		if(scenario.Engine_Speed>sysInfoBlock.systemInfo_RAM.maxEngineSpeed)
-		{
-				sysInfoBlock.systemInfo_RAM.maxEngineSpeed=scenario.Engine_Speed;
-		}
+	if(scenario.Engine_Speed>sysInfoBlock.systemInfo_RAM.maxEngineSpeed)
+	{
+		sysInfoBlock.systemInfo_RAM.maxEngineSpeed=scenario.Engine_Speed;
+	}
 		
-		if(sensors.VBat<sysInfoBlock.systemInfo_RAM.minVoltage)
-		{		
-				sysInfoBlock.systemInfo_RAM.minVoltage=sensors.VBat;	
-		}
+	if(sensors.VBat<sysInfoBlock.systemInfo_RAM.minVoltage)
+	{
+		sysInfoBlock.systemInfo_RAM.minVoltage=sensors.VBat;
+	}
 		
-		if(sensors.VBat>sysInfoBlock.systemInfo_RAM.maxVoltage)
-		{			
-				sysInfoBlock.systemInfo_RAM.maxVoltage=sensors.VBat;
-		}
+	if(sensors.VBat>sysInfoBlock.systemInfo_RAM.maxVoltage)
+	{
+		sysInfoBlock.systemInfo_RAM.maxVoltage=sensors.VBat;
+	}
 		
-		if(sensors.VBat<60u)
-		{
-				Set_Diagnose(fail_0);
-		}
+	if(sensors.VBat<60u)
+	{
+		Set_Diagnose(fail_0);
+	}
 		
-		if(sensors.VBat>140u)
-		{
-				Set_Diagnose(fail_1);
-		}  
+	if(sensors.VBat>140u)
+	{
+		Set_Diagnose(fail_1);
+	}
 }
 
 void resetCauseAnalysis(void)
 {	
-		//In test
-		/*
-		LPWRRSTF   // Low-power reset flag
-		WWDGRSTF   // Window watchdog reset flag
-		IWDGRSTF   // Independent watchdog reset flag
-		SFTRSTF    // Software reset flag
-		PORRSTF    // POR/PDR reset flag
-		PINRSTF    // PIN reset flag
-		RMVF       // Remove reset flag
-		LSIRDY     // Internal low-speed oscillator ready
-		LSION      // Internal low-speed oscillator enable
-		*/		
+	//In test
+	/*
+	LPWRRSTF   // Low-power reset flag
+	WWDGRSTF   // Window watchdog reset flag
+	IWDGRSTF   // Independent watchdog reset flag
+	SFTRSTF    // Software reset flag
+	PORRSTF    // POR/PDR reset flag
+	PINRSTF    // PIN reset flag
+	RMVF       // Remove reset flag
+	LSIRDY     // Internal low-speed oscillator ready
+	LSION      // Internal low-speed oscillator enable
+	*/
 				
-	  sysInfoBlock.systemInfo_RAM.resetCause = reset_cause_get();
-	  //https://stackoverflow.com/questions/34196663/stm32-how-to-get-last-reset-status
+	sysInfoBlock.systemInfo_RAM.resetCause = reset_cause_get();
+	//https://stackoverflow.com/questions/34196663/stm32-how-to-get-last-reset-status
 }	
