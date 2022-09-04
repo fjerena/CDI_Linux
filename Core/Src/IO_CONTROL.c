@@ -9,20 +9,6 @@
 #include "MATH_LIB.h"
 #include "TIMER_FUNC.h"
 
-/*
-void Turn_OFF_Int_input(void)
-{
-    HAL_TIM_IC_Stop_IT(&htim2, TIM_CHANNEL_1);
-    HAL_TIM_IC_Stop_IT(&htim2, TIM_CHANNEL_2);
-}
-
-void Turn_ON_Int_input(void)
-{
-    HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_1);
-    HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_2);
-}
-*/
-
 uint32_t adcInputs[4]={0,0,0,0};
 volatile sensors_measur sensors={0,0,0,0,0,0,0,0,0,0,0,0};  //All sensor variable related
 uint16_t voltageArray[12] = {0, 130, 300, 500, 1000, 1400, 1800, 2600, 3000, 3500, 3700, 4020};

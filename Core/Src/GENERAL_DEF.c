@@ -37,15 +37,15 @@ volatile system_vars scenario = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 	
 void Set_Diagnose(uint8_t diagnose)
 {
-		sysInfoBlock.systemInfo_RAM.diagCode=(sysInfoBlock.systemInfo_RAM.diagCode|diagnose);
+	sysInfoBlock.systemInfo_RAM.diagCode=(sysInfoBlock.systemInfo_RAM.diagCode|diagnose);
 }	
 
 void Clear_Diagnose(uint8_t diagnose)
 {
-		sysInfoBlock.systemInfo_RAM.diagCode=(sysInfoBlock.systemInfo_RAM.diagCode&(~diagnose));
+	sysInfoBlock.systemInfo_RAM.diagCode=(sysInfoBlock.systemInfo_RAM.diagCode&(~diagnose));
 }	
 
 void Clear_All_Diagnoses(void)
 {
-		sysInfoBlock.systemInfo_RAM.diagCode=0x00;  
+	sysInfoBlock.systemInfo_RAM.diagCode=0x00;
 }
